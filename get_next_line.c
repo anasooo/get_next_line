@@ -6,7 +6,7 @@
 /*   By: asodor <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 16:39:39 by asodor            #+#    #+#             */
-/*   Updated: 2023/12/13 21:15:44 by asodor           ###   ########.fr       */
+/*   Updated: 2023/12/21 23:16:49 by asodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ char	*get_next_line(int fd)
 	char		*buffer;
 	static char	*s_buffer;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE >= INT_MAX)
+	if (fd < 0 || BUFFER_SIZE <= 0 || BUFFER_SIZE > INT_MAX)
 		return (0);
-	buffer = malloc(BUFFER_SIZE + 1);
+	buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
 	line = ft_readfile(fd, buffer, s_buffer);
